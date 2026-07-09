@@ -10,7 +10,10 @@ package namespaced
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/wildbitca/provider-upjet-supabase/apis/namespaced/project/v1alpha1"
+	v1alpha1 "github.com/wildbitca/provider-upjet-supabase/apis/namespaced/apikey/v1alpha1"
+	v1alpha1branch "github.com/wildbitca/provider-upjet-supabase/apis/namespaced/branch/v1alpha1"
+	v1alpha1function "github.com/wildbitca/provider-upjet-supabase/apis/namespaced/function/v1alpha1"
+	v1alpha1project "github.com/wildbitca/provider-upjet-supabase/apis/namespaced/project/v1alpha1"
 	v1alpha1namespaced "github.com/wildbitca/provider-upjet-supabase/apis/namespaced/v1alpha1"
 	v1beta1 "github.com/wildbitca/provider-upjet-supabase/apis/namespaced/v1beta1"
 )
@@ -19,6 +22,9 @@ func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1branch.SchemeBuilder.AddToScheme,
+		v1alpha1function.SchemeBuilder.AddToScheme,
+		v1alpha1project.SchemeBuilder.AddToScheme,
 		v1alpha1namespaced.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
 	)

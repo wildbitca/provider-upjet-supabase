@@ -9,10 +9,6 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
-	apikey "github.com/wildbitca/provider-upjet-supabase/internal/controller/cluster/project/apikey"
-	branch "github.com/wildbitca/provider-upjet-supabase/internal/controller/cluster/project/branch"
-	function "github.com/wildbitca/provider-upjet-supabase/internal/controller/cluster/project/function"
-	functionsecrets "github.com/wildbitca/provider-upjet-supabase/internal/controller/cluster/project/functionsecrets"
 	project "github.com/wildbitca/provider-upjet-supabase/internal/controller/cluster/project/project"
 	settings "github.com/wildbitca/provider-upjet-supabase/internal/controller/cluster/project/settings"
 )
@@ -21,10 +17,6 @@ import (
 // the supplied manager.
 func Setup_project(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		apikey.Setup,
-		branch.Setup,
-		function.Setup,
-		functionsecrets.Setup,
 		project.Setup,
 		settings.Setup,
 	} {
@@ -39,10 +31,6 @@ func Setup_project(mgr ctrl.Manager, o controller.Options) error {
 // the supplied manager gated.
 func SetupGated_project(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		apikey.SetupGated,
-		branch.SetupGated,
-		function.SetupGated,
-		functionsecrets.SetupGated,
 		project.SetupGated,
 		settings.SetupGated,
 	} {

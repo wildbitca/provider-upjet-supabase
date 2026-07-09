@@ -66,6 +66,9 @@ jobs:
           REPOS=(
             provider-family-supabase
             provider-supabase-project
+            provider-supabase-branch
+            provider-supabase-function
+            provider-supabase-apikey
           )
           for repo in "${REPOS[@]}"; do
             if ! up repository get "$repo" >/dev/null 2>&1; then
@@ -207,6 +210,9 @@ jobs:
       matrix:
         subpackage:
           - project
+          - branch
+          - function
+          - apikey
     steps:
       - uses: docker/setup-buildx-action@v4
         with: { version: '${{ env.DOCKER_BUILDX_VERSION }}' }

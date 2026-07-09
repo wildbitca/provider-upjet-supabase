@@ -7,18 +7,6 @@
 package v1alpha1
 
 // Hub marks this type as a conversion hub.
-func (tr *Apikey) Hub() {}
-
-// Hub marks this type as a conversion hub.
-func (tr *Branch) Hub() {}
-
-// Hub marks this type as a conversion hub.
-func (tr *Function) Hub() {}
-
-// Hub marks this type as a conversion hub.
-func (tr *FunctionSecrets) Hub() {}
-
-// Hub marks this type as a conversion hub.
 func (tr *Project) Hub() {}
 
 // Hub marks this type as a conversion hub.

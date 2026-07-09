@@ -10,7 +10,10 @@ package cluster
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/wildbitca/provider-upjet-supabase/apis/cluster/project/v1alpha1"
+	v1alpha1 "github.com/wildbitca/provider-upjet-supabase/apis/cluster/apikey/v1alpha1"
+	v1alpha1branch "github.com/wildbitca/provider-upjet-supabase/apis/cluster/branch/v1alpha1"
+	v1alpha1function "github.com/wildbitca/provider-upjet-supabase/apis/cluster/function/v1alpha1"
+	v1alpha1project "github.com/wildbitca/provider-upjet-supabase/apis/cluster/project/v1alpha1"
 	v1alpha1cluster "github.com/wildbitca/provider-upjet-supabase/apis/cluster/v1alpha1"
 	v1beta1 "github.com/wildbitca/provider-upjet-supabase/apis/cluster/v1beta1"
 )
@@ -19,6 +22,9 @@ func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1branch.SchemeBuilder.AddToScheme,
+		v1alpha1function.SchemeBuilder.AddToScheme,
+		v1alpha1project.SchemeBuilder.AddToScheme,
 		v1alpha1cluster.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
 	)

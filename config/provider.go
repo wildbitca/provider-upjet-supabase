@@ -8,7 +8,13 @@ import (
 
 	"github.com/wildbitca/provider-upjet-supabase/hack"
 
+	apikeyCluster "github.com/wildbitca/provider-upjet-supabase/config/cluster/apikey"
+	branchCluster "github.com/wildbitca/provider-upjet-supabase/config/cluster/branch"
+	functionCluster "github.com/wildbitca/provider-upjet-supabase/config/cluster/function"
 	projectCluster "github.com/wildbitca/provider-upjet-supabase/config/cluster/project"
+	apikeyNamespaced "github.com/wildbitca/provider-upjet-supabase/config/namespaced/apikey"
+	branchNamespaced "github.com/wildbitca/provider-upjet-supabase/config/namespaced/branch"
+	functionNamespaced "github.com/wildbitca/provider-upjet-supabase/config/namespaced/function"
 	projectNamespaced "github.com/wildbitca/provider-upjet-supabase/config/namespaced/project"
 )
 
@@ -36,6 +42,9 @@ func GetProvider() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		projectCluster.Configure,
+		branchCluster.Configure,
+		functionCluster.Configure,
+		apikeyCluster.Configure,
 	} {
 		configure(pc)
 	}
@@ -60,6 +69,9 @@ func GetProviderNamespaced() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		projectNamespaced.Configure,
+		branchNamespaced.Configure,
+		functionNamespaced.Configure,
+		apikeyNamespaced.Configure,
 	} {
 		configure(pc)
 	}

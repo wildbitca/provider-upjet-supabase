@@ -9,10 +9,10 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
-	apikey "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/project/apikey"
-	branch "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/project/branch"
-	function "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/project/function"
-	functionsecrets "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/project/functionsecrets"
+	apikey "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/apikey/apikey"
+	branch "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/branch/branch"
+	function "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/function/function"
+	functionsecrets "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/function/functionsecrets"
 	project "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/project/project"
 	settings "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/project/settings"
 	providerconfig "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced/providerconfig"
