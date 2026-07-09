@@ -1,0 +1,14 @@
+apiVersion: meta.pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-family-supabase
+  annotations:
+    meta.crossplane.io/maintainer: "Wildbit"
+    meta.crossplane.io/source: "https://github.com/wildbitca/provider-upjet-supabase"
+    meta.crossplane.io/license: "Apache-2.0"
+    meta.crossplane.io/description: "Upjet-based Crossplane provider family for Supabase. Shared ProviderConfig for all Supabase sub-providers."
+  labels:
+    pkg.crossplane.io/provider-family: provider-family-supabase
+spec:
+  capabilities:
+    - SafeStart
