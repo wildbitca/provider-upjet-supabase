@@ -144,6 +144,9 @@ spec:
                             type: string
                         type: object
                     type: object
+                  persistent:
+                    description: Branch persistency
+                    type: boolean
                   region:
                     description: Database region
                     type: string
@@ -247,6 +250,9 @@ spec:
                             type: string
                         type: object
                     type: object
+                  persistent:
+                    description: Branch persistency
+                    type: boolean
                   region:
                     description: Database region
                     type: string
@@ -348,6 +354,9 @@ spec:
                   parentProjectRef:
                     description: Parent project ref
                     type: string
+                  persistent:
+                    description: Branch persistency
+                    type: boolean
                   region:
                     description: Database region
                     type: string

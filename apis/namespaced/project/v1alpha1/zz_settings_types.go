@@ -19,7 +19,11 @@ type SettingsInitParameters struct {
 	// API settings as [serialised JSON](https://api.supabase.com/api/v1#/services/updatePostgRESTConfig)
 	API *string `json:"api,omitempty" tf:"api,omitempty"`
 
-	// Auth settings as [serialised JSON](https://api.supabase.com/api/v1#/projects%20config/updateV1AuthConfig)
+	// Auth settings as [serialised JSON](https://api.supabase.com/api/v1#/projects%20config/updateV1AuthConfig).
+	//
+	// ~> Several fields are returned as a hash by the API rather than plaintext.
+	//
+	// Affected fields: `smtp_pass`, `sms_twilio_auth_token`, `sms_twilio_verify_auth_token`, `sms_messagebird_access_key`, `sms_textlocal_api_key`, `sms_vonage_api_secret`, `security_captcha_secret`, `external_apple_secret`, `external_azure_secret`, `external_bitbucket_secret`, `external_discord_secret`, `external_facebook_secret`, `external_figma_secret`, `external_github_secret`, `external_gitlab_secret`, `external_google_secret`, `external_kakao_secret`, `external_keycloak_secret`, `external_linkedin_oidc_secret`, `external_notion_secret`, `external_slack_oidc_secret`, `external_slack_secret`, `external_spotify_secret`, `external_twitch_secret`, `external_twitter_secret`, `external_workos_secret`, `external_x_secret`, `external_zoom_secret`, `hook_custom_access_token_secrets`, `hook_mfa_verification_attempt_secrets`, `hook_password_verification_attempt_secrets`, `hook_send_email_secrets`, `hook_send_sms_secrets`.
 	Auth *string `json:"auth,omitempty" tf:"auth,omitempty"`
 
 	// Database settings as [serialised JSON](https://api.supabase.com/api/v1#/projects%20config/updateConfig)
@@ -43,6 +47,9 @@ type SettingsInitParameters struct {
 	// +kubebuilder:validation:Optional
 	ProjectRefSelector *v1.NamespacedSelector `json:"projectRefSelector,omitempty" tf:"-"`
 
+	// Enforce SSL on all database connections. See the [SSL enforcement API](https://api.supabase.com/api/v1#tag/database/put/v1/projects/%7Bref%7D/ssl-enforcement).
+	SSLEnforcement *bool `json:"sslEnforcement,omitempty" tf:"ssl_enforcement,omitempty"`
+
 	// Storage settings as serialised JSON
 	Storage *string `json:"storage,omitempty" tf:"storage,omitempty"`
 }
@@ -52,7 +59,11 @@ type SettingsObservation struct {
 	// API settings as [serialised JSON](https://api.supabase.com/api/v1#/services/updatePostgRESTConfig)
 	API *string `json:"api,omitempty" tf:"api,omitempty"`
 
-	// Auth settings as [serialised JSON](https://api.supabase.com/api/v1#/projects%20config/updateV1AuthConfig)
+	// Auth settings as [serialised JSON](https://api.supabase.com/api/v1#/projects%20config/updateV1AuthConfig).
+	//
+	// ~> Several fields are returned as a hash by the API rather than plaintext.
+	//
+	// Affected fields: `smtp_pass`, `sms_twilio_auth_token`, `sms_twilio_verify_auth_token`, `sms_messagebird_access_key`, `sms_textlocal_api_key`, `sms_vonage_api_secret`, `security_captcha_secret`, `external_apple_secret`, `external_azure_secret`, `external_bitbucket_secret`, `external_discord_secret`, `external_facebook_secret`, `external_figma_secret`, `external_github_secret`, `external_gitlab_secret`, `external_google_secret`, `external_kakao_secret`, `external_keycloak_secret`, `external_linkedin_oidc_secret`, `external_notion_secret`, `external_slack_oidc_secret`, `external_slack_secret`, `external_spotify_secret`, `external_twitch_secret`, `external_twitter_secret`, `external_workos_secret`, `external_x_secret`, `external_zoom_secret`, `hook_custom_access_token_secrets`, `hook_mfa_verification_attempt_secrets`, `hook_password_verification_attempt_secrets`, `hook_send_email_secrets`, `hook_send_sms_secrets`.
 	Auth *string `json:"auth,omitempty" tf:"auth,omitempty"`
 
 	// Database settings as [serialised JSON](https://api.supabase.com/api/v1#/projects%20config/updateConfig)
@@ -69,6 +80,9 @@ type SettingsObservation struct {
 	// Project reference ID
 	ProjectRef *string `json:"projectRef,omitempty" tf:"project_ref,omitempty"`
 
+	// Enforce SSL on all database connections. See the [SSL enforcement API](https://api.supabase.com/api/v1#tag/database/put/v1/projects/%7Bref%7D/ssl-enforcement).
+	SSLEnforcement *bool `json:"sslEnforcement,omitempty" tf:"ssl_enforcement,omitempty"`
+
 	// Storage settings as serialised JSON
 	Storage *string `json:"storage,omitempty" tf:"storage,omitempty"`
 }
@@ -79,7 +93,11 @@ type SettingsParameters struct {
 	// +kubebuilder:validation:Optional
 	API *string `json:"api,omitempty" tf:"api,omitempty"`
 
-	// Auth settings as [serialised JSON](https://api.supabase.com/api/v1#/projects%20config/updateV1AuthConfig)
+	// Auth settings as [serialised JSON](https://api.supabase.com/api/v1#/projects%20config/updateV1AuthConfig).
+	//
+	// ~> Several fields are returned as a hash by the API rather than plaintext.
+	//
+	// Affected fields: `smtp_pass`, `sms_twilio_auth_token`, `sms_twilio_verify_auth_token`, `sms_messagebird_access_key`, `sms_textlocal_api_key`, `sms_vonage_api_secret`, `security_captcha_secret`, `external_apple_secret`, `external_azure_secret`, `external_bitbucket_secret`, `external_discord_secret`, `external_facebook_secret`, `external_figma_secret`, `external_github_secret`, `external_gitlab_secret`, `external_google_secret`, `external_kakao_secret`, `external_keycloak_secret`, `external_linkedin_oidc_secret`, `external_notion_secret`, `external_slack_oidc_secret`, `external_slack_secret`, `external_spotify_secret`, `external_twitch_secret`, `external_twitter_secret`, `external_workos_secret`, `external_x_secret`, `external_zoom_secret`, `hook_custom_access_token_secrets`, `hook_mfa_verification_attempt_secrets`, `hook_password_verification_attempt_secrets`, `hook_send_email_secrets`, `hook_send_sms_secrets`.
 	// +kubebuilder:validation:Optional
 	Auth *string `json:"auth,omitempty" tf:"auth,omitempty"`
 
@@ -107,6 +125,10 @@ type SettingsParameters struct {
 	// Selector for a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
 	ProjectRefSelector *v1.NamespacedSelector `json:"projectRefSelector,omitempty" tf:"-"`
+
+	// Enforce SSL on all database connections. See the [SSL enforcement API](https://api.supabase.com/api/v1#tag/database/put/v1/projects/%7Bref%7D/ssl-enforcement).
+	// +kubebuilder:validation:Optional
+	SSLEnforcement *bool `json:"sslEnforcement,omitempty" tf:"ssl_enforcement,omitempty"`
 
 	// Storage settings as serialised JSON
 	// +kubebuilder:validation:Optional

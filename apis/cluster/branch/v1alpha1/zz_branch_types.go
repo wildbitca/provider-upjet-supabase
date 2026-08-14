@@ -30,6 +30,9 @@ type BranchInitParameters struct {
 	// +kubebuilder:validation:Optional
 	ParentProjectRefSelector *v1.Selector `json:"parentProjectRefSelector,omitempty" tf:"-"`
 
+	// Branch persistency
+	Persistent *bool `json:"persistent,omitempty" tf:"persistent,omitempty"`
+
 	// Database region
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
 }
@@ -44,6 +47,9 @@ type BranchObservation struct {
 
 	// Parent project ref
 	ParentProjectRef *string `json:"parentProjectRef,omitempty" tf:"parent_project_ref,omitempty"`
+
+	// Branch persistency
+	Persistent *bool `json:"persistent,omitempty" tf:"persistent,omitempty"`
 
 	// Database region
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
@@ -67,6 +73,10 @@ type BranchParameters struct {
 	// Selector for a Project in project to populate parentProjectRef.
 	// +kubebuilder:validation:Optional
 	ParentProjectRefSelector *v1.Selector `json:"parentProjectRefSelector,omitempty" tf:"-"`
+
+	// Branch persistency
+	// +kubebuilder:validation:Optional
+	Persistent *bool `json:"persistent,omitempty" tf:"persistent,omitempty"`
 
 	// Database region
 	// +kubebuilder:validation:Optional

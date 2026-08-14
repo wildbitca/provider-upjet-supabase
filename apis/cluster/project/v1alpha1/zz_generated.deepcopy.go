@@ -304,6 +304,11 @@ func (in *SettingsInitParameters) DeepCopyInto(out *SettingsInitParameters) {
 		*out = new(v1.Selector)
 		(*in).DeepCopyInto(*out)
 	}
+	if in.SSLEnforcement != nil {
+		in, out := &in.SSLEnforcement, &out.SSLEnforcement
+		*out = new(bool)
+		**out = **in
+	}
 	if in.Storage != nil {
 		in, out := &in.Storage, &out.Storage
 		*out = new(string)
@@ -391,6 +396,11 @@ func (in *SettingsObservation) DeepCopyInto(out *SettingsObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.SSLEnforcement != nil {
+		in, out := &in.SSLEnforcement, &out.SSLEnforcement
+		*out = new(bool)
+		**out = **in
+	}
 	if in.Storage != nil {
 		in, out := &in.Storage, &out.Storage
 		*out = new(string)
@@ -450,6 +460,11 @@ func (in *SettingsParameters) DeepCopyInto(out *SettingsParameters) {
 		in, out := &in.ProjectRefSelector, &out.ProjectRefSelector
 		*out = new(v1.Selector)
 		(*in).DeepCopyInto(*out)
+	}
+	if in.SSLEnforcement != nil {
+		in, out := &in.SSLEnforcement, &out.SSLEnforcement
+		*out = new(bool)
+		**out = **in
 	}
 	if in.Storage != nil {
 		in, out := &in.Storage, &out.Storage

@@ -20,10 +20,10 @@ env:
   UPBOUND_REGISTRY: xpkg.upbound.io/wildbitca
   OPENTOFU_VERSION: '1.11.5'
   TERRAFORM_PROVIDER_SOURCE: supabase/supabase
-  TERRAFORM_PROVIDER_VERSION: '1.9.1'
+  TERRAFORM_PROVIDER_VERSION: '1.10.1'
   TERRAFORM_PROVIDER_DOWNLOAD_NAME: terraform-provider-supabase
-  TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX: https://github.com/supabase/terraform-provider-supabase/releases/download/v1.9.1
-  TERRAFORM_NATIVE_PROVIDER_BINARY: terraform-provider-supabase_v1.9.1
+  TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX: https://github.com/supabase/terraform-provider-supabase/releases/download/v1.10.1
+  TERRAFORM_NATIVE_PROVIDER_BINARY: terraform-provider-supabase_v1.10.1
 
 permissions:
   contents: write

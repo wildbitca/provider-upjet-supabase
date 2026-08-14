@@ -63,6 +63,11 @@ func (in *BranchInitParameters) DeepCopyInto(out *BranchInitParameters) {
 		*out = new(v1.Selector)
 		(*in).DeepCopyInto(*out)
 	}
+	if in.Persistent != nil {
+		in, out := &in.Persistent, &out.Persistent
+		*out = new(bool)
+		**out = **in
+	}
 	if in.Region != nil {
 		in, out := &in.Region, &out.Region
 		*out = new(string)
@@ -135,6 +140,11 @@ func (in *BranchObservation) DeepCopyInto(out *BranchObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Persistent != nil {
+		in, out := &in.Persistent, &out.Persistent
+		*out = new(bool)
+		**out = **in
+	}
 	if in.Region != nil {
 		in, out := &in.Region, &out.Region
 		*out = new(string)
@@ -174,6 +184,11 @@ func (in *BranchParameters) DeepCopyInto(out *BranchParameters) {
 		in, out := &in.ParentProjectRefSelector, &out.ParentProjectRefSelector
 		*out = new(v1.Selector)
 		(*in).DeepCopyInto(*out)
+	}
+	if in.Persistent != nil {
+		in, out := &in.Persistent, &out.Persistent
+		*out = new(bool)
+		**out = **in
 	}
 	if in.Region != nil {
 		in, out := &in.Region, &out.Region
