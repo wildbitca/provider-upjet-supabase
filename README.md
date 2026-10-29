@@ -16,14 +16,17 @@ kind: Provider
 metadata:
   name: provider-supabase-project
 spec:
-  package: xpkg.upbound.io/wildbitca/provider-supabase-project:v0.1.0
+  package: xpkg.upbound.io/wildbitca/provider-supabase-project:v1.0.0
 ```
 
 ### Available sub-providers
 
 | Sub-provider | Resources |
 |-------------|-----------|
-| `provider-supabase-project` | Projects, settings, branches, edge functions, edge function secrets, API keys |
+| `provider-supabase-project` | Projects, settings |
+| `provider-supabase-branch` | Branches |
+| `provider-supabase-function` | Edge functions, edge function secrets |
+| `provider-supabase-apikey` | API keys |
 
 ### ProviderConfig
 
@@ -106,9 +109,12 @@ make build.family FAMILY_SUBPACKAGES="config project"
 
 ## Supported resources
 
-This provider exposes 6 managed resources from the [Supabase Terraform Provider v1.11.0](https://registry.terraform.io/providers/supabase/supabase/1.11.0/docs), organized in a single `project` API group:
+This provider exposes 6 managed resources from the [Supabase Terraform Provider v1.11.0](https://registry.terraform.io/providers/supabase/supabase/1.11.0/docs), organized in four API groups (`project`, `branch`, `function`, `apikey`):
 
-- **Project**: `supabase_project`, `supabase_settings`, `supabase_branch`, `supabase_edge_function`, `supabase_edge_function_secrets`, `supabase_apikey`
+- **project**: `supabase_project`, `supabase_settings`
+- **branch**: `supabase_branch`
+- **function**: `supabase_edge_function`, `supabase_edge_function_secrets`
+- **apikey**: `supabase_apikey`
 
 Kinds (group `project.upjet-supabase.upbound.io` for cluster scope, `project.upjet-supabase.m.upbound.io` for namespaced):
 

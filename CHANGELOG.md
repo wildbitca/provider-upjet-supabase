@@ -1,6 +1,20 @@
 # Changelog
 
-## Unreleased
+## 1.0.0 - 2026-10-29
+
+First stable release. All Wildbit providers move to 1.x together.
+
+### Breaking changes
+
+- Upjet moved from the `wildbitca/upjet` fork to upstream `crossplane/upjet` v2.5.1 and crossplane-runtime to v2.4.0. Go consumers importing `apis/*/v1beta1` must switch to the `ProviderConfig` / `ProviderConfigUsage` types backed by `github.com/crossplane/crossplane/apis/v2/core/v2`.
+- All CRDs were regenerated with controller-tools v0.20.0 (new `status.lastHandledReconcileAt`); managed-resource schemas for the cluster and namespaced scopes changed accordingly.
+- Requires a Crossplane v2 control plane.
+
+### Migration
+
+- Upgrade Crossplane to v2 first, then update the `Provider` packages (family and every installed sub-provider) to `v1.0.0` together so the shared `ProviderConfig` CRDs stay consistent.
+- Re-apply any manifests that pin CRD fields from the previous version; existing managed resources keep their external names and need no manual changes.
+- Review `legacy_api_keys_enabled` on `Project`: it is now flagged deprecated by the Terraform provider.
 
 ### Changed
 
