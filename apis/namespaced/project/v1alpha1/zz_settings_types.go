@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SettingsInitParameters struct {
@@ -41,11 +40,11 @@ type SettingsInitParameters struct {
 
 	// Reference to a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefRef *v1.NamespacedReference `json:"projectRefRef,omitempty" tf:"-"`
+	ProjectRefRef *v2.NamespacedReference `json:"projectRefRef,omitempty" tf:"-"`
 
 	// Selector for a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefSelector *v1.NamespacedSelector `json:"projectRefSelector,omitempty" tf:"-"`
+	ProjectRefSelector *v2.NamespacedSelector `json:"projectRefSelector,omitempty" tf:"-"`
 
 	// Enforce SSL on all database connections. See the [SSL enforcement API](https://api.supabase.com/api/v1#tag/database/put/v1/projects/%7Bref%7D/ssl-enforcement).
 	SSLEnforcement *bool `json:"sslEnforcement,omitempty" tf:"ssl_enforcement,omitempty"`
@@ -120,11 +119,11 @@ type SettingsParameters struct {
 
 	// Reference to a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefRef *v1.NamespacedReference `json:"projectRefRef,omitempty" tf:"-"`
+	ProjectRefRef *v2.NamespacedReference `json:"projectRefRef,omitempty" tf:"-"`
 
 	// Selector for a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefSelector *v1.NamespacedSelector `json:"projectRefSelector,omitempty" tf:"-"`
+	ProjectRefSelector *v2.NamespacedSelector `json:"projectRefSelector,omitempty" tf:"-"`
 
 	// Enforce SSL on all database connections. See the [SSL enforcement API](https://api.supabase.com/api/v1#tag/database/put/v1/projects/%7Bref%7D/ssl-enforcement).
 	// +kubebuilder:validation:Optional
@@ -154,8 +153,8 @@ type SettingsSpec struct {
 
 // SettingsStatus defines the observed state of Settings.
 type SettingsStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SettingsObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SettingsObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -5,6 +5,7 @@
 package providerconfig
 
 import (
+	"github.com/crossplane/crossplane-runtime/v2/pkg/errors"
 	"github.com/crossplane/crossplane-runtime/v2/pkg/event"
 	"github.com/crossplane/crossplane-runtime/v2/pkg/reconciler/providerconfig"
 	"github.com/crossplane/crossplane-runtime/v2/pkg/resource"
@@ -13,6 +14,15 @@ import (
 
 	"github.com/wildbitca/provider-upjet-supabase/apis/cluster/v1beta1"
 )
+
+// SetupWebhookWithManager registers the conversion webhook for ProviderConfig.
+func SetupWebhookWithManager(mgr ctrl.Manager) error {
+	if err := ctrl.NewWebhookManagedBy(mgr, &v1beta1.ProviderConfig{}).
+		Complete(); err != nil {
+		return errors.Wrap(err, "cannot register webhook for the kind v1beta1.ProviderConfig")
+	}
+	return nil
+}
 
 // Setup adds a controller that reconciles ProviderConfigs.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
@@ -29,7 +39,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		Watches(&v1beta1.ProviderConfigUsage{}, &resource.EnqueueRequestForProviderConfig{}).
 		Complete(providerconfig.NewReconciler(mgr, of,
 			providerconfig.WithLogger(o.Logger.WithValues("controller", name)),
-			providerconfig.WithRecorder(event.NewAPIRecorder(mgr.GetEventRecorderFor(name)))))
+			providerconfig.WithRecorder(event.NewAPIRecorder(mgr.GetEventRecorderFor(name))))) //nolint:staticcheck // suppress until crossplane-runtime offers the new recorder api
 }
 
 // SetupGated adds a gated controller that reconciles ProviderConfigs.

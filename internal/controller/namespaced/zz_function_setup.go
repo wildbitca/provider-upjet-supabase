@@ -40,3 +40,16 @@ func SetupGated_function(mgr ctrl.Manager, o controller.Options) error {
 	}
 	return nil
 }
+
+// SetupWebhookWithManager_function registers conversion webhooks for all resource kinds in the group.
+func SetupWebhookWithManager_function(mgr ctrl.Manager) error {
+	for _, setup := range []func(ctrl.Manager) error{
+		function.SetupWebhookWithManager,
+		functionsecrets.SetupWebhookWithManager,
+	} {
+		if err := setup(mgr); err != nil {
+			return err
+		}
+	}
+	return nil
+}

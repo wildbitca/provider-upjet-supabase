@@ -219,6 +219,11 @@ func main() {
 		kingpin.FatalIfError(controllerNamespaced.Setup_apikey(mgr, namespacedOpts), "Cannot setup namespaced UpjetSupabase controllers")
 	}
 
+	if *certsDir != "" {
+		kingpin.FatalIfError(controllerCluster.SetupWebhookWithManager_apikey(mgr), "Cannot setup cluster-scoped UpjetSupabase webhooks")
+		kingpin.FatalIfError(controllerNamespaced.SetupWebhookWithManager_apikey(mgr), "Cannot setup namespaced UpjetSupabase webhooks")
+	}
+
 	kingpin.FatalIfError(mgr.Start(ctrl.SetupSignalHandler()), "Cannot start controller manager")
 }
 
