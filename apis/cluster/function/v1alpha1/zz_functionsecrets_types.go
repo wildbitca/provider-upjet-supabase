@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type FunctionSecretsInitParameters struct {
@@ -21,11 +21,11 @@ type FunctionSecretsInitParameters struct {
 
 	// Reference to a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefRef *v1.Reference `json:"projectRefRef,omitempty" tf:"-"`
+	ProjectRefRef *v2.Reference `json:"projectRefRef,omitempty" tf:"-"`
 
 	// Selector for a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefSelector *v1.Selector `json:"projectRefSelector,omitempty" tf:"-"`
+	ProjectRefSelector *v2.Selector `json:"projectRefSelector,omitempty" tf:"-"`
 
 	Secrets []SecretsInitParameters `json:"secrets,omitempty" tf:"secrets,omitempty"`
 }
@@ -52,11 +52,11 @@ type FunctionSecretsParameters struct {
 
 	// Reference to a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefRef *v1.Reference `json:"projectRefRef,omitempty" tf:"-"`
+	ProjectRefRef *v2.Reference `json:"projectRefRef,omitempty" tf:"-"`
 
 	// Selector for a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefSelector *v1.Selector `json:"projectRefSelector,omitempty" tf:"-"`
+	ProjectRefSelector *v2.Selector `json:"projectRefSelector,omitempty" tf:"-"`
 
 	// +kubebuilder:validation:Optional
 	Secrets []SecretsParameters `json:"secrets,omitempty" tf:"secrets,omitempty"`
@@ -68,7 +68,7 @@ type SecretsInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// The plaintext secret value. After an import this field will be `null` because the Supabase API only returns SHA-256 digests — see the Import section below.
-	ValueSecretRef v1.SecretKeySelector `json:"valueSecretRef" tf:"-"`
+	ValueSecretRef v2.SecretKeySelector `json:"valueSecretRef" tf:"-"`
 }
 
 type SecretsObservation struct {
@@ -85,13 +85,13 @@ type SecretsParameters struct {
 
 	// The plaintext secret value. After an import this field will be `null` because the Supabase API only returns SHA-256 digests — see the Import section below.
 	// +kubebuilder:validation:Optional
-	ValueSecretRef v1.SecretKeySelector `json:"valueSecretRef" tf:"-"`
+	ValueSecretRef v2.SecretKeySelector `json:"valueSecretRef" tf:"-"`
 }
 
 // FunctionSecretsSpec defines the desired state of FunctionSecrets
 type FunctionSecretsSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     FunctionSecretsParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   FunctionSecretsParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -107,8 +107,8 @@ type FunctionSecretsSpec struct {
 
 // FunctionSecretsStatus defines the observed state of FunctionSecrets.
 type FunctionSecretsStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        FunctionSecretsObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               FunctionSecretsObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

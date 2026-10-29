@@ -10,13 +10,13 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type ProjectInitParameters struct {
 
 	// Password for the project database
-	DatabasePasswordSecretRef v1.SecretKeySelector `json:"databasePasswordSecretRef" tf:"-"`
+	DatabasePasswordSecretRef v2.SecretKeySelector `json:"databasePasswordSecretRef" tf:"-"`
 
 	// Desired instance size of the project
 	InstanceSize *string `json:"instanceSize,omitempty" tf:"instance_size,omitempty"`
@@ -57,7 +57,7 @@ type ProjectParameters struct {
 
 	// Password for the project database
 	// +kubebuilder:validation:Optional
-	DatabasePasswordSecretRef v1.SecretKeySelector `json:"databasePasswordSecretRef" tf:"-"`
+	DatabasePasswordSecretRef v2.SecretKeySelector `json:"databasePasswordSecretRef" tf:"-"`
 
 	// Desired instance size of the project
 	// +kubebuilder:validation:Optional
@@ -82,8 +82,8 @@ type ProjectParameters struct {
 
 // ProjectSpec defines the desired state of Project
 type ProjectSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     ProjectParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   ProjectParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -99,8 +99,8 @@ type ProjectSpec struct {
 
 // ProjectStatus defines the observed state of Project.
 type ProjectStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        ProjectObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               ProjectObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

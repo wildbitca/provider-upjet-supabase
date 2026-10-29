@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type FunctionInitParameters struct {
@@ -30,11 +30,11 @@ type FunctionInitParameters struct {
 
 	// Reference to a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefRef *v1.Reference `json:"projectRefRef,omitempty" tf:"-"`
+	ProjectRefRef *v2.Reference `json:"projectRefRef,omitempty" tf:"-"`
 
 	// Selector for a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefSelector *v1.Selector `json:"projectRefSelector,omitempty" tf:"-"`
+	ProjectRefSelector *v2.Selector `json:"projectRefSelector,omitempty" tf:"-"`
 
 	// URL-friendly identifier for the function
 	Slug *string `json:"slug,omitempty" tf:"slug,omitempty"`
@@ -105,11 +105,11 @@ type FunctionParameters struct {
 
 	// Reference to a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefRef *v1.Reference `json:"projectRefRef,omitempty" tf:"-"`
+	ProjectRefRef *v2.Reference `json:"projectRefRef,omitempty" tf:"-"`
 
 	// Selector for a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefSelector *v1.Selector `json:"projectRefSelector,omitempty" tf:"-"`
+	ProjectRefSelector *v2.Selector `json:"projectRefSelector,omitempty" tf:"-"`
 
 	// URL-friendly identifier for the function
 	// +kubebuilder:validation:Optional
@@ -122,8 +122,8 @@ type FunctionParameters struct {
 
 // FunctionSpec defines the desired state of Function
 type FunctionSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     FunctionParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   FunctionParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -139,8 +139,8 @@ type FunctionSpec struct {
 
 // FunctionStatus defines the observed state of Function.
 type FunctionStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        FunctionObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               FunctionObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

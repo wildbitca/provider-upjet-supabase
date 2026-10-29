@@ -4,7 +4,7 @@
 PROJECT_NAME ?= provider-upjet-supabase
 PROJECT_REPO ?= github.com/wildbitca/$(PROJECT_NAME)
 
-export OPENTOFU_VERSION ?= 1.11.5
+export OPENTOFU_VERSION ?= 1.13.2
 
 export TERRAFORM_PROVIDER_SOURCE ?= supabase/supabase
 export TERRAFORM_PROVIDER_REPO ?= https://github.com/supabase/terraform-provider-supabase

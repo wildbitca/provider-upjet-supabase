@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-- [Go](https://go.dev/doc/install) 1.24+
-- [OpenTofu](https://opentofu.org/) 1.9+ (required for schema generation; auto-installed by `make generate`)
+- [Go](https://go.dev/doc/install) 1.26.8+
+- [OpenTofu](https://opentofu.org/) 1.13+ (required for schema generation; auto-installed by `make generate`)
 - [goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports): `go install golang.org/x/tools/cmd/goimports@latest` and ensure it is on your PATH
 
 ## Code generation

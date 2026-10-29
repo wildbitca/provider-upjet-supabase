@@ -106,7 +106,7 @@ make build.family FAMILY_SUBPACKAGES="config project"
 
 ## Supported resources
 
-This provider exposes 6 managed resources from the [Supabase Terraform Provider v1.9.1](https://registry.terraform.io/providers/supabase/supabase/1.9.1/docs), organized in a single `project` API group:
+This provider exposes 6 managed resources from the [Supabase Terraform Provider v1.11.0](https://registry.terraform.io/providers/supabase/supabase/1.11.0/docs), organized in a single `project` API group:
 
 - **Project**: `supabase_project`, `supabase_settings`, `supabase_branch`, `supabase_edge_function`, `supabase_edge_function_secrets`, `supabase_apikey`
 

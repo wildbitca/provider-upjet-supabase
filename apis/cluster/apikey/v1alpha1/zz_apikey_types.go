@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type ApikeyInitParameters struct {
@@ -27,11 +27,11 @@ type ApikeyInitParameters struct {
 
 	// Reference to a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefRef *v1.Reference `json:"projectRefRef,omitempty" tf:"-"`
+	ProjectRefRef *v2.Reference `json:"projectRefRef,omitempty" tf:"-"`
 
 	// Selector for a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefSelector *v1.Selector `json:"projectRefSelector,omitempty" tf:"-"`
+	ProjectRefSelector *v2.Selector `json:"projectRefSelector,omitempty" tf:"-"`
 }
 
 type ApikeyObservation struct {
@@ -70,11 +70,11 @@ type ApikeyParameters struct {
 
 	// Reference to a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefRef *v1.Reference `json:"projectRefRef,omitempty" tf:"-"`
+	ProjectRefRef *v2.Reference `json:"projectRefRef,omitempty" tf:"-"`
 
 	// Selector for a Project in project to populate projectRef.
 	// +kubebuilder:validation:Optional
-	ProjectRefSelector *v1.Selector `json:"projectRefSelector,omitempty" tf:"-"`
+	ProjectRefSelector *v2.Selector `json:"projectRefSelector,omitempty" tf:"-"`
 }
 
 type SecretJwtTemplateInitParameters struct {
@@ -91,8 +91,8 @@ type SecretJwtTemplateParameters struct {
 
 // ApikeySpec defines the desired state of Apikey
 type ApikeySpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     ApikeyParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   ApikeyParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -108,8 +108,8 @@ type ApikeySpec struct {
 
 // ApikeyStatus defines the observed state of Apikey.
 type ApikeyStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        ApikeyObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               ApikeyObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true
