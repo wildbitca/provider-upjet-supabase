@@ -24,6 +24,7 @@ import (
 	"github.com/crossplane/crossplane-runtime/v2/pkg/statemetrics"
 	tjcontroller "github.com/crossplane/upjet/v2/pkg/controller"
 	"github.com/crossplane/upjet/v2/pkg/terraform"
+	"github.com/spf13/afero"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	authv1 "k8s.io/api/authorization/v1"
@@ -45,6 +46,7 @@ import (
 	controllerCluster "github.com/wildbitca/provider-upjet-supabase/internal/controller/cluster"
 	controllerNamespaced "github.com/wildbitca/provider-upjet-supabase/internal/controller/namespaced"
 	"github.com/wildbitca/provider-upjet-supabase/internal/features"
+	"github.com/wildbitca/provider-upjet-supabase/internal/tfstatefs"
 	"github.com/wildbitca/provider-upjet-supabase/internal/version"
 )
 
@@ -153,7 +155,7 @@ func main() {
 			},
 		},
 		Provider:       config.GetProvider(),
-		WorkspaceStore: terraform.NewWorkspaceStore(log),
+		WorkspaceStore: terraform.NewWorkspaceStore(log, terraform.WithFs(tfstatefs.New(afero.NewOsFs()))),
 		SetupFn:        clients.TerraformSetupBuilder(*terraformVersion, *providerSource, *providerVersion),
 		StartWebhooks:  *certsDir != "",
 	}
@@ -172,7 +174,7 @@ func main() {
 			},
 		},
 		Provider:       config.GetProviderNamespaced(),
-		WorkspaceStore: terraform.NewWorkspaceStore(log),
+		WorkspaceStore: terraform.NewWorkspaceStore(log, terraform.WithFs(tfstatefs.New(afero.NewOsFs()))),
 		SetupFn:        clients.TerraformSetupBuilder(*terraformVersion, *providerSource, *providerVersion),
 		StartWebhooks:  *certsDir != "",
 	}

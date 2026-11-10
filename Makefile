@@ -331,10 +331,6 @@ help-special: crossplane.help
 .PHONY: crossplane.help help-special
 
 # TODO(negz): Update CI to use these targets.
-vendor: modules.download vendor.patch
+vendor: modules.download
 vendor.check: modules.check
 
-# Apply patches to vendored dependencies after go mod vendor.
-# These patches fix upstream issues that haven't been merged yet.
-vendor.patch:
-	@[ -x patches/apply.sh ] && patches/apply.sh || true

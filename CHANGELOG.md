@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.1 - 2026-11-10
+
+### Fixed
+
+- `supabase_project` (and every other Plugin Framework resource) can be created again from a managed resource with no external name. The synthetic Terraform state that Upjet builds for a never-created resource carries `id=""`; the Plugin Framework Supabase provider keeps such an instance on refresh, so Upjet reported a phantom `Ready=True` without ever calling Create (or, with a project list response, failed the refresh with `cannot unmarshal array`). The workspace file system now drops a `terraform.tfstate` whose instances all have an empty `id`, so the refresh starts from an empty state, Upjet sees the resource as absent and Terraform apply creates it, after which the external name is recorded from the new `id`. Adoption of existing projects through the `crossplane.io/external-name` annotation is unchanged.
+
+### Removed
+
+- `patches/apply.sh` and the `vendor.patch` hook: the patch targeted a `vendor/` directory that is never built from, so it had no effect.
+
 ## 1.0.0 - 2026-10-29
 
 First stable release. All Wildbit providers move to 1.x together.
