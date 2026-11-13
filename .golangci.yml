@@ -106,7 +106,7 @@ linters:
           - gosec
         text: 'G104:'
     paths:
-      - zz_\..+\.go$
+      - zz_.+\.go$
       - third_party$
       - builtin$
       - examples$
@@ -127,7 +127,7 @@ formatters:
   exclusions:
     generated: lax
     paths:
-      - zz_\..+\.go$
+      - zz_.+\.go$
       - third_party$
       - builtin$
       - examples$
