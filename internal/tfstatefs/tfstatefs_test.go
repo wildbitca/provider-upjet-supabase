@@ -1,6 +1,7 @@
 package tfstatefs
 
 import (
+	"bytes"
 	"errors"
 	"io/fs"
 	"testing"
@@ -32,7 +33,7 @@ func TestWriteState(t *testing.T) {
 			}
 			got, err := afero.ReadFile(mem, "/ws/terraform.tfstate")
 			if tc.wantExists {
-				if err != nil || string(got) != string(tc.content) {
+				if err != nil || !bytes.Equal(got, tc.content) {
 					t.Fatalf("state not persisted intact: %v %q", err, got)
 				}
 				return
@@ -51,7 +52,7 @@ func TestOtherFilesUntouched(t *testing.T) {
 	if err := a.WriteFile("/ws/main.tf.json", body, 0o600); err != nil {
 		t.Fatal(err)
 	}
-	if got, err := afero.ReadFile(mem, "/ws/main.tf.json"); err != nil || string(got) != string(body) {
+	if got, err := afero.ReadFile(mem, "/ws/main.tf.json"); err != nil || !bytes.Equal(got, body) {
 		t.Fatalf("other file altered: %v %q", err, got)
 	}
 }
