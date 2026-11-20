@@ -6,54 +6,54 @@
 
 package v1alpha1
 
-import xpv1 "github.com/crossplane/crossplane/apis/v2/core/v2"
+import xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 
 // GetCondition of this Branch.
-func (mg *Branch) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *Branch) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this Branch.
-func (mg *Branch) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *Branch) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this Branch.
-func (mg *Branch) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *Branch) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this Branch.
-func (mg *Branch) GetProviderConfigReference() *xpv1.Reference {
+func (mg *Branch) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this Branch.
-func (mg *Branch) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *Branch) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this Branch.
-func (mg *Branch) SetConditions(c ...xpv1.Condition) {
+func (mg *Branch) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this Branch.
-func (mg *Branch) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *Branch) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this Branch.
-func (mg *Branch) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *Branch) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this Branch.
-func (mg *Branch) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *Branch) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this Branch.
-func (mg *Branch) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *Branch) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }

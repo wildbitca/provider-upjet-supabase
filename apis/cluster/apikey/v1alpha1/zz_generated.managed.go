@@ -6,54 +6,54 @@
 
 package v1alpha1
 
-import xpv1 "github.com/crossplane/crossplane/apis/v2/core/v2"
+import xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 
 // GetCondition of this Apikey.
-func (mg *Apikey) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *Apikey) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this Apikey.
-func (mg *Apikey) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *Apikey) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this Apikey.
-func (mg *Apikey) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *Apikey) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this Apikey.
-func (mg *Apikey) GetProviderConfigReference() *xpv1.Reference {
+func (mg *Apikey) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this Apikey.
-func (mg *Apikey) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *Apikey) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this Apikey.
-func (mg *Apikey) SetConditions(c ...xpv1.Condition) {
+func (mg *Apikey) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this Apikey.
-func (mg *Apikey) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *Apikey) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this Apikey.
-func (mg *Apikey) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *Apikey) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this Apikey.
-func (mg *Apikey) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *Apikey) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this Apikey.
-func (mg *Apikey) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *Apikey) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
