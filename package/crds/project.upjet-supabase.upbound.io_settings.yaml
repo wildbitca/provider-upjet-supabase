@@ -174,7 +174,10 @@ spec:
                       [SSL enforcement API](https://api.supabase.com/api/v1#tag/database/put/v1/projects/%7Bref%7D/ssl-enforcement).
                     type: boolean
                   storage:
-                    description: Storage settings as serialised JSON
+                    description: |-
+                      Storage settings as serialised JSON.
+
+                      ~> `migrationVersion`, `capabilities` and `databasePoolMode` are read-only and managed by Supabase. They are never written to state and setting them has no effect.
                     type: string
                 type: object
               initProvider:
@@ -292,7 +295,10 @@ spec:
                       [SSL enforcement API](https://api.supabase.com/api/v1#tag/database/put/v1/projects/%7Bref%7D/ssl-enforcement).
                     type: boolean
                   storage:
-                    description: Storage settings as serialised JSON
+                    description: |-
+                      Storage settings as serialised JSON.
+
+                      ~> `migrationVersion`, `capabilities` and `databasePoolMode` are read-only and managed by Supabase. They are never written to state and setting them has no effect.
                     type: string
                 type: object
               managementPolicies:
@@ -416,7 +422,10 @@ spec:
                       [SSL enforcement API](https://api.supabase.com/api/v1#tag/database/put/v1/projects/%7Bref%7D/ssl-enforcement).
                     type: boolean
                   storage:
-                    description: Storage settings as serialised JSON
+                    description: |-
+                      Storage settings as serialised JSON.
+
+                      ~> `migrationVersion`, `capabilities` and `databasePoolMode` are read-only and managed by Supabase. They are never written to state and setting them has no effect.
                     type: string
                 type: object
               conditions:

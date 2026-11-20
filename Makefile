@@ -4,14 +4,14 @@
 PROJECT_NAME ?= provider-upjet-supabase
 PROJECT_REPO ?= github.com/wildbitca/$(PROJECT_NAME)
 
-export OPENTOFU_VERSION ?= 1.13.2
+export OPENTOFU_VERSION ?= 1.13.9
 
 export TERRAFORM_PROVIDER_SOURCE ?= supabase/supabase
 export TERRAFORM_PROVIDER_REPO ?= https://github.com/supabase/terraform-provider-supabase
-export TERRAFORM_PROVIDER_VERSION ?= 1.11.0
+export TERRAFORM_PROVIDER_VERSION ?= 1.11.1
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME ?= terraform-provider-supabase
 export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX ?= https://github.com/supabase/terraform-provider-supabase/releases/download/v$(TERRAFORM_PROVIDER_VERSION)
-export TERRAFORM_NATIVE_PROVIDER_BINARY ?= terraform-provider-supabase_v1.11.0
+export TERRAFORM_NATIVE_PROVIDER_BINARY ?= terraform-provider-supabase_v1.11.1
 export TERRAFORM_DOCS_PATH ?= docs/resources
 
 

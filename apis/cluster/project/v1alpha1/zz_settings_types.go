@@ -49,7 +49,9 @@ type SettingsInitParameters struct {
 	// Enforce SSL on all database connections. See the [SSL enforcement API](https://api.supabase.com/api/v1#tag/database/put/v1/projects/%7Bref%7D/ssl-enforcement).
 	SSLEnforcement *bool `json:"sslEnforcement,omitempty" tf:"ssl_enforcement,omitempty"`
 
-	// Storage settings as serialised JSON
+	// Storage settings as serialised JSON.
+	//
+	// ~> `migrationVersion`, `capabilities` and `databasePoolMode` are read-only and managed by Supabase. They are never written to state and setting them has no effect.
 	Storage *string `json:"storage,omitempty" tf:"storage,omitempty"`
 }
 
@@ -82,7 +84,9 @@ type SettingsObservation struct {
 	// Enforce SSL on all database connections. See the [SSL enforcement API](https://api.supabase.com/api/v1#tag/database/put/v1/projects/%7Bref%7D/ssl-enforcement).
 	SSLEnforcement *bool `json:"sslEnforcement,omitempty" tf:"ssl_enforcement,omitempty"`
 
-	// Storage settings as serialised JSON
+	// Storage settings as serialised JSON.
+	//
+	// ~> `migrationVersion`, `capabilities` and `databasePoolMode` are read-only and managed by Supabase. They are never written to state and setting them has no effect.
 	Storage *string `json:"storage,omitempty" tf:"storage,omitempty"`
 }
 
@@ -129,7 +133,9 @@ type SettingsParameters struct {
 	// +kubebuilder:validation:Optional
 	SSLEnforcement *bool `json:"sslEnforcement,omitempty" tf:"ssl_enforcement,omitempty"`
 
-	// Storage settings as serialised JSON
+	// Storage settings as serialised JSON.
+	//
+	// ~> `migrationVersion`, `capabilities` and `databasePoolMode` are read-only and managed by Supabase. They are never written to state and setting them has no effect.
 	// +kubebuilder:validation:Optional
 	Storage *string `json:"storage,omitempty" tf:"storage,omitempty"`
 }
